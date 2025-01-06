@@ -4,6 +4,22 @@
 
 A system for predicting short-term stock volatility based on high-frequency market data (order book and trade history).
 
+├── Dockerfile
+├── README.md
+├── .gitignore
+├── .pre-commit-config.yaml
+├── architecture.png
+├── infer.py
+├── poetry.lock
+├── pyproject.toml
+├── train.py
+└── volatility_prediction
+    ├── attention.py
+    ├── data_downloader.py
+    ├── dataset.py
+    ├── model.py
+    └── utils.py
+
 ### Why is it important?
 
 Accurate volatility prediction is crucial for:

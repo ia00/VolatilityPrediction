@@ -1,0 +1,10 @@
+*.ipynb
+.env
+data/
+.vscode/
+.codegpt
+.DS_Store
+lightning_logs/
+__pycache__/
+*.csv
+*.parquet

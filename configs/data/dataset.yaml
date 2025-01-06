@@ -1,0 +1,22 @@
+dataset:
+  mode: "multi-stock"  # or 'single-stock'
+  train_val_split: 0.9
+  cv_folds: 5
+  random_seed: 1
+  num_workers: 1
+  pin_memory: true
+  batch_sizes:
+    multi_stock:
+      train: 8
+      val: 32
+      test: 32
+    single_stock:
+      train: 128
+      val: 128
+      test: 128 
+data_dir: "data/optiver-realized-volatility-prediction"
+coarsen: 3 
+n_jobs: 4
+n_features: 21
+n_stocks: 112
+n_seconds: 600

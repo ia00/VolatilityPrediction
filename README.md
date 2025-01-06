@@ -9,12 +9,28 @@ A system for predicting short-term stock volatility based on high-frequency mark
 ├── README.md
 ├── .gitignore
 ├── .pre-commit-config.yaml
+├── .dvcignore
 ├── architecture.png
+├── configs
+│   ├── config.yaml
+│   ├── data
+│   │   └── dataset.yaml
+│   ├── inference
+│   │   └── inference.yaml
+│   └── model
+│       ├── model.yaml
+│       └── training.yaml
+├── data
+│   └── optiver-realized-volatility-prediction.dvc
 ├── infer.py
+├── models
+│   ├── model.ckpt
+│   └── model.ckpt.dvc
 ├── poetry.lock
 ├── pyproject.toml
 ├── train.py
 └── volatility_prediction
+    ├── __init__.py
     ├── attention.py
     ├── data_downloader.py
     ├── dataset.py

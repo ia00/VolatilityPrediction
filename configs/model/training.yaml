@@ -1,0 +1,17 @@
+training:
+  accelerator: "cpu"
+  precision: 16
+  max_epochs:
+    multi_stock: 1
+    single_stock: 25
+  limit_train_batches: 10  # null for multi-stock
+  optimizer:
+    name: "Adam"
+    lr:
+      multi_stock: 0.001
+      single_stock: 0.0005
+  scheduler:
+    name: "ExponentialLR"
+    gamma:
+      multi_stock: 0.93
+      single_stock: 0.9 

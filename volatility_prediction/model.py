@@ -4,8 +4,6 @@ import pytorch_lightning as pl
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch.optim import Adam
-from torch.optim.lr_scheduler import ExponentialLR
 
 from .attention import StockAttention, TimeAttention
 
@@ -23,6 +21,7 @@ class OptiverModel(pl.LightningModule):
         rnn_dropout=0.3,
         n_features=21,
         aux_loss_weight=1.0,
+        lr=0.001,
     ):
         super().__init__()
         self.save_hyperparameters()
@@ -39,6 +38,7 @@ class OptiverModel(pl.LightningModule):
         self.fc_out1 = nn.Linear(dim, 1)
         self.fc_out2 = nn.Linear(dim, 1)
         self.history = pd.DataFrame()
+        self.lr = lr
 
     def forward(self, x, stock_ind=None):
         # x: (b, st, t, f)
@@ -126,14 +126,8 @@ class OptiverModel(pl.LightningModule):
         self.common_epoch_end(outs, "valid")
 
     def configure_optimizers(self):
-        opt = Adam(self.parameters(), lr=0.001)
-        #         opt = Adam(self.parameters(), lr=0.0005) # single-stock
-        sched = {
-            "scheduler": ExponentialLR(opt, 0.93),
-            #             'scheduler': ExponentialLR(opt, 0.9), #  single-stock
-            "interval": "epoch",
-        }
-        return [opt], [sched]
+        optimizer = torch.optim.Adam(self.parameters(), lr=self.lr)
+        return optimizer
 
     def test_step(self, batch, batch_idx):
         return self.common_step(batch, "test")

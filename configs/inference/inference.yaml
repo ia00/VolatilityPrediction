@@ -1,0 +1,3 @@
+inference:
+  checkpoint_path: null  # если null, будет использован последний чекпойнт
+  output_path: "predictions.csv" 

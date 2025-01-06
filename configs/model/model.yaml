@@ -1,0 +1,8 @@
+model:
+  mode: "multi-stock"  # or 'single-stock'
+  dim: 32
+  conv1_kernel: 1
+  rnn_layers: 2
+  rnn_dropout: 0.3
+  n_features: 21
+  aux_loss_weight: 1.0  # 0.0 for single-stock 

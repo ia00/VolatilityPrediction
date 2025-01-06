@@ -4,6 +4,7 @@
 
 A system for predicting short-term stock volatility based on high-frequency market data (order book and trade history).
 
+```
 ├── Dockerfile
 ├── README.md
 ├── .gitignore
@@ -19,6 +20,7 @@ A system for predicting short-term stock volatility based on high-frequency mark
     ├── dataset.py
     ├── model.py
     └── utils.py
+```
 
 ### Why is it important?
 

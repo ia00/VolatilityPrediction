@@ -1,5 +1,7 @@
 """Training script for the Optiver volatility prediction model."""
 
+import os
+
 import numpy as np
 import pytorch_lightning as pl
 from sklearn.model_selection import KFold
@@ -10,8 +12,21 @@ from volatility_prediction.model import OptiverModel
 from volatility_prediction.utils import load_and_prepare_data
 
 
+def setup_dvc():
+    """Setup DVC and pull required data."""
+    try:
+        # Pull data from DVC storage
+        os.system("dvc pull data/optiver-realized-volatility-prediction")
+    except Exception as e:
+        print(f"Warning: Could not pull data from DVC storage: {e}")
+        print("Continuing with local data if available...")
+
+
 def main():
     """Run the training pipeline including data preparation, training and evaluation."""
+    # Setup DVC and pull data
+    setup_dvc()
+
     # Load and prepare data
     # (3830, 112, 200, 21)
     train_data, train_extra, train_norm = load_and_prepare_data(

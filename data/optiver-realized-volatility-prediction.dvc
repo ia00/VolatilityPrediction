@@ -1,0 +1,6 @@
+outs:
+- md5: 7172a8668459b104a66b90bea87b0e88.dir
+  size: 2733852741
+  nfiles: 229
+  hash: md5
+  path: optiver-realized-volatility-prediction

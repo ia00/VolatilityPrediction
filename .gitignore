@@ -1,6 +1,6 @@
 *.ipynb
 .env
-data/
+# data/
 .vscode/
 .codegpt
 .DS_Store
